@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-import  {Items} from '../../providers/items/items';
 import { TranslateService } from '@ngx-translate/core';
 
 export interface Slide {
@@ -20,9 +19,9 @@ export class TutorialPage {
   dir: string = 'ltr';
   products:any;
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform,public items:Items) {
+  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
     console.log('ok');
-    this.getProducts();
+    
     this.dir = platform.dir();
     
         this.slides = [
@@ -39,13 +38,7 @@ export class TutorialPage {
         ];
       
   }
-  getProducts() {
-    this.items.getProducts()
-    .then(data => {
-      this.products = data;
-      console.log(this.products);
-    });
-  }
+ 
 
   startApp() {
     this.navCtrl.setRoot('WelcomePage', {}, {
