@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,NavOptions } from 'ionic-angular';
+import { ApiProductsPage} from '../api-products/api-products';
+
+
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -13,14 +16,18 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
+  constructor(public navCtrl: NavController,public navParam: NavParams) {
 
-  constructor(public navCtrl: NavController) { }
-
-  login() {
-    this.navCtrl.push('LoginPage');
   }
-
-  signup() {
-    this.navCtrl.push('SignupPage');
-  }
+  products=5;
+  goToproducts($event){
+    
+    this.navCtrl.push(ApiProductsPage, {
+      'id': $event.target.id
+      
+      }); 
+      
 }
+}
+  
+  
